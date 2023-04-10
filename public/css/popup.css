@@ -1,0 +1,97 @@
+
+#popUp{
+	z-index: 15;
+	height: 80vh;
+	width: 50vw;
+	margin-left: 25VW;
+	margin-top: 5px;
+	position: fixed;
+	display: none;
+	background:#fff;
+	box-shadow: 2px 2px 20px #000;
+}
+
+#popUpContent{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	width: 100%;
+	position: absolute;
+	top: 0px;
+}
+
+#popUp  h2{
+	text-align: center;
+}
+
+#popUpImage{
+    height: 100%;
+	width: 100%;
+}
+
+#popUp a h2{
+    text-decoration: none;
+    color: #000;
+    margin-bottom: 20px;
+}
+
+#popUp a {
+    text-decoration: none;
+    display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#popUpImage a img{
+	height: 50vh;
+	/* width: 48vw; */
+    margin-left: 2%;
+	border-radius: 10px;
+}
+
+#closePopUp{
+	text-align: right;
+	margin-right: 20px;
+	margin-top: 20px;
+	font-weight: 700;
+	font-size: 24px;
+	cursor: pointer;
+	color: #cc212f;
+}
+
+@media screen and (max-width: 950px) {
+
+#popUp{
+	width: 60vw;
+	margin-left: 20VW;
+}
+
+/* #popUpImage a img{
+	width: 58vw;
+}
+} */
+
+@media screen and (max-width: 750px) {
+
+#popUp{
+	width: 80vw;
+	margin-left: 10VW;
+}
+
+/* #popUpImage a img{
+	width: 75vw;
+}
+} */
+
+@media screen and (max-width: 600px) {
+
+#popUp{
+	width: 100vw;
+	margin-left: 0VW;
+}
+
+#popUpImage a img{
+	width: 95vw;
+}
+}
