@@ -39,7 +39,7 @@
                             <thead>
                                 <tr>
                                     <th>SL</th>
-                                    <th>Photo Name</th>
+                                    <th>Title</th>
                                     <th>Photo Description</th>
                                     <th>Photo Image</th>
                                     <th>Priority Order</th>

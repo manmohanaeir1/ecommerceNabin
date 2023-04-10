@@ -84,6 +84,11 @@ Route::get('course/edit/{id}', [CourseController::class, 'edit'])->name('course.
 Route::post('course/update/{id}', [CourseController::class, 'update'])->name('course.update');
 Route::delete('course/delete/{id}', [CourseController::class, 'destroy'])->name('course.delete');
 
+// for productcategory using resource
+Route::resource('productcategory', ProductCategoryController::class);
+
+// for product using resource
+Route::resource('product', ProductController::class);
 
 
 // for Photo using resource
@@ -92,8 +97,11 @@ Route::delete('course/delete/{id}', [CourseController::class, 'destroy'])->name(
     // for career using resource
     // Route::resource('career', CareerController::class);
 
-    // for contact resource
-    // Route::resource('contact', ContactController::class);
+// for contact resource
+Route::resource('contact', ContactController::class);
+
+     
+    
     
 
 

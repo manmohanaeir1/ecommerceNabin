@@ -19,7 +19,7 @@
         
         <!-- Header Title -->
         <div class="page-title-box">
-            <h3>IT Zone Computer</h3>
+            <h3>Ecommerce</h3>
         </div>
         <!-- /Header Title -->
         

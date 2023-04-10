@@ -22,7 +22,13 @@ use Illuminate\Pagination\Paginator;
 class FrontendController extends Controller
 {
     public function home(){
-        return view('frontend.home');
+        // for slider(photo) 
+        $photos = Photo::all();
+        // photo list
+        $photo_lists = Photo_list::all();
+
+
+        return view('frontend.home' , compact('photos' , 'photo_lists'));
     }
 
     public function about(){
@@ -41,5 +47,9 @@ class FrontendController extends Controller
     public function contact(){
         return view('frontend.pages.contact-us');
     }
+
+
+   
+
     
 }

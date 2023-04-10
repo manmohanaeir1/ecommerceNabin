@@ -103,7 +103,7 @@
                                 <div class="row">
                                     <div class="col-md-12">                             
                                         <div class="form-group" style="margin-top: 10px">
-                                            <label for="photo_image">Photo Image <span class="text-danger">*</span> </label>
+                                            <label for="photo_image">Photo Image  <span class="text-danger">Olly 2 Photos for under slider </span> </label>
                                             <input type="file" class="form-control" id="photo_image" name="image[]" multiple= "multiple">
                                             
                                         </div>
