@@ -12,6 +12,7 @@ use App\Models\Download;
 
 use App\Models\Photo;
 use App\Models\Photo_list;
+use App\Models\Product;
 use App\Models\Video;
 
 
@@ -27,8 +28,12 @@ class FrontendController extends Controller
         // photo list
         $photo_lists = Photo_list::all();
 
+        // get all products
 
-        return view('frontend.home' , compact('photos' , 'photo_lists'));
+        $products = Product::all();
+
+
+        return view('frontend.home' , compact('photos' , 'photo_lists','products'));
     }
 
     public function about(){
@@ -46,6 +51,12 @@ class FrontendController extends Controller
     // for contact-us
     public function contact(){
         return view('frontend.pages.contact-us');
+    }
+
+    //for single product 
+
+    public function singlePproduct(){
+        
     }
 
 

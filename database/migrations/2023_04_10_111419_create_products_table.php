@@ -20,6 +20,7 @@ class CreateProductsTable extends Migration
             $table->string('thumbnail');
             $table->unsignedBigInteger('category_id');
             $table->string('price');
+            $table->string('new_price');
             $table->string('short_description');
             $table->longText('description');
             $table->enum('status', ["Draft", "Published"]);

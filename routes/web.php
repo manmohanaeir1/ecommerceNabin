@@ -30,6 +30,9 @@ Route::get('/wlc', function () {
 });
 
 Route::group(['middleware' => 'HtmlMinifier'], function () {
+     
+    Route::get('/header', [FrontendController::class, 'header'])->name('frontend.header');
+
     Route::get('/', [FrontendController::class, 'home'])->name('frontend.home');
     Route::get('about-us', [FrontendController::class, 'about'])->name('frontend.about');
     Route::get('shop', [FrontendController::class, 'shop'])->name('frontend.shop');

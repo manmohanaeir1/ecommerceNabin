@@ -1,5 +1,9 @@
 @extends('admin.layouts.master')
 @section('content')
+@php
+$order = DB::table('categories')->max('order');
+$order = $order +10;
+@endphp
     <div class="content container-fluid">
 
         <!-- Page Header -->
@@ -56,7 +60,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="order">Priority Order <span class="text-danger">*</span></label>
-                                        <input type="number" class="form-control" id="order" name="order" value="{{ old('order') }}">
+                                        <input type="number" class="form-control" id="order" name="order" value="{{ $order }}">
                                     </div>
                                 </div>
                             </div>

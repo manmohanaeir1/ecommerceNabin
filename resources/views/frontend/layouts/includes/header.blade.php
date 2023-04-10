@@ -62,10 +62,16 @@
 										<a href="#" class="link-control">All Category</a>
 										<ul class="list-cate">
                                             {{-- show category form database whose order is high --}}
-                                            @foreach(\App\Models\ProductCategory::limit(8)->get() as $category)
-                                                <li > <a href="#"></a>{{$category->name}}</li>
-                                            @endforeach
-                                                
+												@foreach(\App\Models\ProductCategory::where('parent_id', 0)->limit(8)->get() as $category)
+													<li>
+														<a href="#">{{ $category->name }}</a>
+														@foreach(\App\Models\ProductCategory::where('parent_id', $category->id)->get() as $childCategory)
+															<ul class="sub-cate">
+																<li><a href="#">{{ $childCategory->name }}</a></li>
+															</ul>
+														@endforeach
+													</li>
+												@endforeach
 											
 										</ul>
 									</div>

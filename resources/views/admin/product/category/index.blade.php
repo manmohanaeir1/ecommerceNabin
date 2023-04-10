@@ -3,6 +3,7 @@
     <link rel="stylesheet" href="//cdn.datatables.net/1.13.2/css/jquery.dataTables.min.css">
 @endsection
 @section('content')
+
     <div class="content container-fluid">
         <!-- Page Header -->
         <div class="page-header">

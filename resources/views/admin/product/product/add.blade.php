@@ -6,14 +6,14 @@
         <div class="page-header">
             <div class="row">
                 <div class="col">
-                    <h3 class="page-title">Posts</h3>
+                    <h3 class="page-title">Products</h3>
 
                     <div class="col-auto float-right ml-auto">
-                        <a href="{{ route('post.index') }}" class="btn add-btn" ><i class="fa fa-eye"></i> View Posts</a>
+                        <a href="{{ route('product.index') }}" class="btn add-btn" ><i class="fa fa-eye"></i> View Products</a>
                     </div>
                     <ul class="breadcrumb">
                         <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
-                        <li class="breadcrumb-item active">Add New Post</li>
+                        <li class="breadcrumb-item active">Add New Product</li>
                     </ul>
                 </div>
             </div>
@@ -21,8 +21,7 @@
         <!-- /Page Header -->
 
         @include('admin.layouts.includes._message')
-        <form action="{{ route('post.store') }}" method="POST" enctype="multipart/form-data">
-
+        <form action="{{ route('product.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
         <div class="row">
             <div class="col-md-8">
@@ -30,7 +29,13 @@
                     <div class="card-body">
 
                             <div class="row">
-                                <div class="col-md-4">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="title">Product Name <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" id="title" name="title" value="{{ old('title') }} " reruired>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="category_id">Under Category <span class="text-danger">*</span></label>
                                         <select name="category_id" id="category_id" class="form-control">
@@ -38,24 +43,38 @@
                                         </select>
                                     </div>
                                 </div>
-
-
-                                <div class="col-md-8">
+                                <div class="col-md-3">
                                     <div class="form-group">
-                                        <label for="post_title">Post Title <span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control" id="post_title" name="post_title" value="{{ old('post_title') }} " reruired>
+                                        <label for="price">Price </label>
+                                        <input type="text" class="form-control" id="price" name="price" value="{{ old('price') }}">
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="new_price">New Price </label>
+                                        <input type="text" class="form-control" id="new_price" name="new_price" value="{{ old('new_price') }}">
                                     </div>
                                 </div>
 
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label for="post_content">Content <span class="text-danger">*</span></label>
-                                        <textarea name="post_content" id="post_content" cols="30" rows="10" class="form-control"required ></textarea>
+                                        <label for="short_description">Short Description <span class="text-danger">*</span></label>
+                                        <textarea name="short_description" id="short_description" cols="30" rows="10" class="form-control"required >
+                                            {{ old('short_description') }}
+                                        </textarea>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="description"> Description <span class="text-danger">*</span></label>
+                                        <textarea name="description" id="description" cols="30" rows="10" class="form-control"required >
+                                            {{ old('description') }}
+                                        </textarea>
                                     </div>
                                 </div>
 
 
-                                <div class="col-md-12">
+                                {{-- <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="tag_id">Select Tags <span class="text-danger">*</span></label>
                                         <select name="tag_id[]" id="tag_id" class="form-control tags" multiple required>
@@ -64,7 +83,7 @@
                                             @endforeach
                                         </select>
                                     </div>
-                                </div>
+                                </div> --}}
                             </div>
 
 
@@ -99,61 +118,23 @@
                                 <div class="col-md-12">
                                     <img src="https://via.placeholder.com/300x200?text=Thumbnail+Image" alt="" id="one">
                                     <div class="form-group" style="margin-top: 10px">
-                                        <label for="image">Post Image <span class="text-danger">*</span> </label>
-                                        <input type="file" class="form-control" id="image" name="image">
+                                        <label for="image">Thumbnail <span class="text-danger">*</span> </label>
+                                        <input type="file" class="form-control" id="thumbnail" name="thumbnail">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">                             
+                                    <div class="form-group" style="margin-top: 10px">
+                                        <label for="photo_image">Photo Image  <span class="text-danger">Multiple related photo can upload </span> </label>
+                                        <input type="file" class="form-control" id="photo_image" name="image[]" multiple= "multiple">
+                                        
                                     </div>
                                 </div>
                             </div>
 
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label for="seo_title">Start_date </label>
-                                    <input type="date" class="form-control" id="start_date" name="start_date" value="{{ old('start_date') }}">
-                                </div>
-                            </div>
 
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label for="seo_title">End_date </label>
-                                    <input type="date" class="form-control" id="valid_date" name="valid_date" value="{{ old('valid_date') }}">
-                                </div>
-                            </div>
-
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label for="seo_title">SEO Title </label>
-                                    <input type="text" class="form-control" id="seo_title" name="seo_title" value="{{ old('seo_title') }}">
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label for="seo_subtitle">SEO Sub Title </label>
-                                    <input type="text" class="form-control" id="seo_subtitle" name="seo_subtitle" value="{{ old('seo_subtitle') }}">
-                                </div>
-                            </div>
-
-
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label for="seo_keywords">SEO Keywords </label>
-                                    <input type="text" class="form-control" id="seo_keywords" name="seo_keywords" value="{{ old('seo_keywords') }}">
-                                </div>
-                            </div>
-
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label for="seo_description">SEO Description </label>
-                                    <input type="text" class="form-control" id="seo_description" name="seo_description" value="{{ old('seo_description') }}">
-                                </div>
-                            </div>
-
-                        </div>
+                       
                 </div>
             </div>
         </div>
@@ -164,7 +145,9 @@
     
     <script src="https://cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
     <script>
-        CKEDITOR.replace( 'post_content' );
+        CKEDITOR.replace( 'short_description' );
+        CKEDITOR.replace( 'description' );
+
     </script>
     <script>
         $(document).ready(function () {
