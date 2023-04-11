@@ -50,7 +50,9 @@ class PhotoController extends Controller
             'order' => 'required',
             'status' => 'required',
             'image' => 'required',
-            'thumbnail' => 'required'
+            'thumbnail' => 'required',
+            'price' => 'required'
+            
 
        ];
 
@@ -59,8 +61,8 @@ class PhotoController extends Controller
            'order.required' => 'Order is required',
            'status.required' => 'Status is required',
            'image.required' => 'Image is required',
-                'thumbnail.required' => 'Thumbnail is required'
-
+                'thumbnail.required' => 'Thumbnail is required',
+            'price.required' => 'Price is required'
        ];
 
        $this->validate($request, $rules, $customMsg);
@@ -68,8 +70,8 @@ class PhotoController extends Controller
         $photo = new Photo();
         $photo->title = $input['title'];
         $photo->description = $input['description'];
-        $photo->date = $input['date'];
         $photo->order = $input['order'];
+        $photo->price = $input['price'];
 
         if(!empty($input['status'])){
             $photo->status = "Published";

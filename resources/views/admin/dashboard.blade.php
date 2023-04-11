@@ -24,7 +24,7 @@
 								<div class="card-body">
 									<span class="dash-widget-icon"><i class="fa fa-inbox"></i></span>
 									<div class="dash-widget-info">
-										<h3>{{$careerCount}}</h3>
+										<h3>22</h3>
 										<span>Carrer Application</span>
 									</div>
 								</div>
@@ -35,7 +35,7 @@
 								<div class="card-body">
 									<span class="dash-widget-icon"><i class="fa fa-phone"></i></span>
 									<div class="dash-widget-info">
-										<h3>{{$contactCount}}</h3>
+										<h3>33</h3>
 										<span>Contact</span>
 									</div>
 								</div>
@@ -46,7 +46,7 @@
 								<div class="card-body">
 									<span class="dash-widget-icon"><i class="fa fa-book"></i></span>
 									<div class="dash-widget-info">
-										<h3>{{$courseCount}}</h3>
+										<h3>32</h3>
 										<span>Courses</span>
 									</div>
 								</div>
@@ -57,7 +57,7 @@
 								<div class="card-body">
 									<span class="dash-widget-icon"><i class="fa fa-edit"></i></span>
 									<div class="dash-widget-info">
-										<h3>{{$postCount}}</h3>
+										<h3>23</h3>
 										<span>Posts</span>
 									</div>
 								</div>

@@ -15,6 +15,7 @@ class Photo extends Model
         'date',
         'status',
         'image',
+        'price',
         'thumbnail',
         
         

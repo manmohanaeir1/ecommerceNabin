@@ -1,22 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Post;
-use App\Models\Tag;
-use App\Models\post_tags;
-use App\Models\Category;
-use App\Models\CourseCategory;
-use App\Models\Course;
-use App\Models\CourseCurriculum;
-use App\Models\Download;
+
  
 use App\Models\ProductPhotoList;
 use App\Models\ProductCategory;
-
 use App\Models\Photo;
 use App\Models\Photo_list;
 use App\Models\Product;
-use App\Models\Video;
+
 
 
 
@@ -30,7 +22,7 @@ class FrontendController extends Controller
         // for slider(photo) 
         $photos = Photo::all();
         // photo list
-        $photo_lists = Photo_list::all();
+        $photo_lists = Photo_list::inRandomOrder()->limit(2)->get();
 
         // get all products
 
@@ -49,7 +41,24 @@ class FrontendController extends Controller
     }
 
     public function shop(){
-    return  view('frontend.pages.shop');
+
+        // get all categories parents and subcategories
+        $categories = ProductCategory::where('parent_id' , 0)->get();
+        // only which has parent id 0
+        $subcategories = ProductCategory::where('parent_id' , '!=' , 0)->get();
+
+    
+        // get all products
+        $products = Product::paginate(6);
+
+        // get all products rendom 4
+        $randomproducts = Product::inRandomOrder()->limit(4)->get();
+
+
+        
+
+    return  view('frontend.pages.shop' , compact('categories'   , 'subcategories' , 'products' , 'randomproducts'));
+    
     }
 
     // for contact-us
@@ -64,12 +73,16 @@ class FrontendController extends Controller
         $product = Product::find($id);
 
         // get all productsphotolist by product id form productphotolist table
-        $productphotolists = ProductPhotoList::where('product_id' , $id)->limit(4)->get();
+        $productphotolists = ProductPhotoList::where('product_id' , $id)->limit(4)->get(); 
+
+        //popular product random 4
+        $popularproduct = Product::inRandomOrder()->limit(6)->get();
 
         // get all product related to that product category using id
         $productcategory = Product::where('category_id' , $product->category_id)->limit(8)->get();
+
         
-        return view('frontend.pages.singleproduct' , compact('product' , 'productphotolists','productcategory'));
+        return view('frontend.pages.singleproduct' , compact('product' , 'productphotolists', 'popularproduct', 'productcategory'));
 
 
         

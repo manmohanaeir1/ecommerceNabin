@@ -42,6 +42,7 @@
                                     <th>Photo Name</th>
                                     <th>Photo Description</th>
                                     <th>Thumbnail </th>
+                                    <th>Price</th>
                                     <th>Priority Order</th>
                                     <th>Status</th>
                                     <th>Action</th>
@@ -60,6 +61,7 @@
                                         
                                         <img src="{{ asset('uploads/thumbnail/'.$photo->thumbnail) }}" alt="" height="90" width="90" class="img img-responsive img-thumbnail">
                                     </td>
+                                    <td>{{ $photo->price }}</td>
                                     <td>{{ $photo->order }}</td>
                                     <td>
                                         @if ($photo->status == 'Published')

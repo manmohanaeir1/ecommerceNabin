@@ -20,22 +20,10 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        // count carrer 
-      $careerCount = Career::all()->count();
-
-        // contact 
-        $contactCount = Contact::all()->count();
-
-        // count course
-        $courseCount = Course::all()->count();  
-      
-        // count curriculum
-       $curriculumCount = CourseCurriculum::all()->count();
-        // count post 
-        $postCount = Post::all()->count();
+    
 
         
-        return view('admin.dashboard',compact('careerCount','contactCount','courseCount','curriculumCount','postCount'));
+        return view('admin.dashboard');
 
 
 

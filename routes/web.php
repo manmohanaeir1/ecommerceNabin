@@ -46,7 +46,7 @@ Route::group(['middleware' => 'HtmlMinifier'], function () {
 //Category
 
 Route::group(['prefix' => "admin", 'middleware'=>'auth',], function(){
-
+    
 Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard.index');    
 Route::get('category', [CategoryController::class, 'index'])->name('category.index');
 Route::get('category/add', [CategoryController::class, 'add'])->name('category.add');
@@ -78,15 +78,6 @@ Route::get('post/edit/{id}', [PostController::class, 'edit'])->name('post.edit')
 Route::post('post/update/{id}', [PostController::class, 'update'])->name('post.update');
 Route::get('post/delete/{id}', [PostController::class, 'destroy'])->name('post.delete');
 
-//Course
-
-Route::get('course', [CourseController::class, 'index'])->name('course.index');
-Route::get('course/add', [CourseController::class, 'create'])->name('course.add');
-Route::post('course/store', [CourseController::class, 'store'])->name('course.store');
-Route::get('course/show/{course}', [CourseController::class, 'show'])->name('course.show');
-Route::get('course/edit/{id}', [CourseController::class, 'edit'])->name('course.edit');
-Route::post('course/update/{id}', [CourseController::class, 'update'])->name('course.update');
-Route::delete('course/delete/{id}', [CourseController::class, 'destroy'])->name('course.delete');
 
 // for productcategory using resource
 Route::resource('productcategory', ProductCategoryController::class);

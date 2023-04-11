@@ -38,8 +38,8 @@
                                 </div>
                                 <div class="col-md-8">
                                     <div class="form-group">
-                                        <label for="date">Date <span class="text-danger">*</span></label>
-                                        <input type="date" class="form-control" id="date" name="date" value="{{ old('date') }} " reruired>
+                                        <label for="date">Price <span class="text-danger">*</span></label>
+                                        <input type="integer" class="form-control" id="price" name="price" value="{{ old('price') }} " reruired>
                                     </div>
                                 </div>
                                

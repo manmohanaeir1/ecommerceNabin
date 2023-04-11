@@ -17,10 +17,10 @@ class CreatePhotosTable extends Migration
             $table->id();
             $table->string('title');
             $table->longText('description')->nullable();
-            $table->string('date')->nullable();
             $table->string('order')->nullable();
             $table->string('image')->nullable();
             $table->string('thumbnail')->nullable();
+            $table->string('price')->nullable();
             $table->enum('status', ["Draft", "Published"]);
 
             $table->timestamps();

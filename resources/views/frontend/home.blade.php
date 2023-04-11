@@ -19,8 +19,8 @@ Home
 						<img src="{{ asset('uploads/thumbnail/'.$slider->thumbnail) }}" alt=""  class="img-slide">
 						<div class="slide-info slide-3">
 							<h2 class="f-title">Great Range of <b>{{$slider->title}}</b></h2>
-							<span class="f-subtitle">{!!$slider->description!!}</span>
-							<p class="sale-info">Stating at: <b class="price">$225.00</b></p>
+							<span class="f-subtitle">{!!Str::limit($slider->description, 30) !!}</span>
+							<p class="sale-info">Stating at: {{$slider->price}}<b class="price"></b></p>
 							<a href="#" class="btn-link">Shop Now</a>
 						</div>
 					</div>
