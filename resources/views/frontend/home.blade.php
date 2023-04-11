@@ -207,18 +207,18 @@ Home
 									@foreach ($products as $item)
 									<div class="product product-style-2 equal-elem ">
 										<div class="product-thumnail">
-											<a href="#" title="{{$item->title}}">
+											<a href="{{route('frontend.single-product', $item->id)}}" title="{{$item->title}}">
 												<figure><img src="{{asset('uploads/products/thumbnail/'. $item->thumbnail)}}" width="800" height="800" alt="{{$item->title}}"></figure>
 											</a>
 											<div class="group-flash">
 												<span class="flash-item new-label">new</span>
 											</div>
 											<div class="wrap-btn">
-												<a href="#" class="function-link">quick view</a>
+												<a href="{{route('frontend.single-product', $item->id) }}" class="function-link">quick view</a>
 											</div>
 										</div>
 										<div class="product-info">
-											<a href="#" class="product-name"><span>{!!Str::limit($item->short_description, 50) !!}</span></a>
+											<a href="{{route('frontend.single-product', $item->id) }}" class="product-name"><span>{!!Str::limit($item->title, 30) !!}</span></a>
 											<div class="wrap-price"><span class="product-price">Rs.{{$item->price}}</span></div>
 										</div>
 									</div>

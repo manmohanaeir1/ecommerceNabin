@@ -62,6 +62,7 @@ class ProductController extends Controller
             'short_description' => 'required| max:255',
             'description' => 'required',
             'price' => 'required',
+            
             'new_price' => 'required',
                 ];
         $customMessages = [
@@ -108,9 +109,11 @@ class ProductController extends Controller
        if ($request->hasfile('image')) {
         $images = array();
         foreach ($request->file('image') as $image) {
-            $destinationPath = 'uploads/product/photos';
+            $destinationPath = 'uploads/products/photos/';
             $Upload_image = date('YmdHis') . "_" . $image
             ->getClientOriginalName();
+            $image->move($destinationPath, $Upload_image);
+            $images[] = $Upload_image;
             
             $product_list = new ProductPhotoList();
             $product_list->product_id = $data->id;

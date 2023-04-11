@@ -9,11 +9,15 @@ use App\Models\CourseCategory;
 use App\Models\Course;
 use App\Models\CourseCurriculum;
 use App\Models\Download;
+ 
+use App\Models\ProductPhotoList;
+use App\Models\ProductCategory;
 
 use App\Models\Photo;
 use App\Models\Photo_list;
 use App\Models\Product;
 use App\Models\Video;
+
 
 
 use Illuminate\Http\Request;
@@ -55,7 +59,19 @@ class FrontendController extends Controller
 
     //for single product 
 
-    public function singlePproduct(){
+    public function singleproduct($id){
+       // get product by id
+        $product = Product::find($id);
+
+        // get all productsphotolist by product id form productphotolist table
+        $productphotolists = ProductPhotoList::where('product_id' , $id)->limit(4)->get();
+
+        // get all product related to that product category using id
+        $productcategory = Product::where('category_id' , $product->category_id)->limit(8)->get();
+        
+        return view('frontend.pages.singleproduct' , compact('product' , 'productphotolists','productcategory'));
+
+
         
     }
 

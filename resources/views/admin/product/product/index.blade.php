@@ -45,8 +45,9 @@
                                 <th>Category_id</th>
                                 <th>Price</th>
                                 <th>New_price</th>
-                                <th>Short_description</th>
+                                <th>Features</th>
                                 <th>Description</th>
+                                <th>Availability</th>
                                 <th>Status</th>
                                 <th>Action</th>
                             </tr>
@@ -55,13 +56,21 @@
                                     @foreach ($products as $key => $product)
                                     <tr>
                                         <td>{{ $key+1 }}</td>
-                                        <td>{{ $product->title }}</td>
+                                        <td>{!!Str::limit($product->title, 30) !!}</td>
                                         <td><img src="{{ asset('uploads/products/thumbnail/'.$product->thumbnail) }}" alt="" width="100px"></td>
                                         <td>{{ $product->category_id }}</td>
                                         <td>{{ $product->price }}</td>
                                         <td>{{ $product->new_price }}</td>
-                                        <td>{!! $product->short_description !!}</td>
-                                        <td>{!! $product->description !!}</td>
+                                        <td>{!!Str::limit($product->description, 30) !!}</td>
+                                        <td>{!!Str::limit($product->short_description, 30) !!}</td>
+                                        
+                                        <td>
+                                            @if ($product->availability == 1)
+                                                <span class="badge badge-success">In Stock</span>
+                                            @else
+                                                <span class="badge badge-danger">Out of Stock</span>
+                                            @endif
+                                        </td>
                                         <td>{{ $product->status }}</td>
                                         <td>
                                             <a href="{{ route('product.edit', $product->id) }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></a>

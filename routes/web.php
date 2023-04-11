@@ -36,7 +36,8 @@ Route::group(['middleware' => 'HtmlMinifier'], function () {
     Route::get('/', [FrontendController::class, 'home'])->name('frontend.home');
     Route::get('about-us', [FrontendController::class, 'about'])->name('frontend.about');
     Route::get('shop', [FrontendController::class, 'shop'])->name('frontend.shop');
-    Route::get('contact-us', [FrontendController::class, 'contact'])->name('frontend.contact'); 
+    Route::get('contact-us', [FrontendController::class, 'contact'])->name('frontend.contact');
+    Route::get('single-product/{id}', [FrontendController::class, 'singleproduct'])->name('frontend.single-product'); 
 });
 
 

@@ -23,6 +23,8 @@ class CreateProductsTable extends Migration
             $table->string('new_price');
             $table->string('short_description');
             $table->longText('description');
+            $table->string('features');
+            $table->boolean('availability')->default(1);
             $table->enum('status', ["Draft", "Published"]);
             //making `category_id` as foreign key
             $table->foreign('category_id')->references('id')->on('product_categories')->onDelete('cascade');

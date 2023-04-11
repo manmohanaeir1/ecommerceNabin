@@ -58,8 +58,8 @@
 
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label for="short_description">Short Description <span class="text-danger">*</span></label>
-                                        <textarea name="short_description" id="short_description" cols="30" rows="10" class="form-control"required >
+                                        <label for="short_description">Features <span class="text-danger">*</span></label>
+                                        <textarea name="short_description" id="short_description" cols="5" rows="5" class="form-control"required >
                                             {{ old('short_description') }}
                                         </textarea>
                                     </div>
@@ -145,7 +145,6 @@
     
     <script src="https://cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
     <script>
-        CKEDITOR.replace( 'short_description' );
         CKEDITOR.replace( 'description' );
 
     </script>
