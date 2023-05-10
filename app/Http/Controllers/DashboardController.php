@@ -3,11 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Career;
-use App\Models\Course;
-use App\Models\CourseCurriculum;
-use App\Models\Post;
-use App\Models\Contact;
+use App\Models\User;
 
 
 
@@ -23,6 +19,8 @@ class DashboardController extends Controller
     
 
         
+        // $admin = User::all(); for login user
+       
         return view('admin.dashboard');
 
 

@@ -4,7 +4,7 @@
         <!-- Logo -->
         <div class="header-left">
             <a href="{{route('dashboard.index')}}" class="logo">
-                <img src="/back-end/img/logo.png" width="40" height="40" alt="">
+                <img src="/back-end/img/" width="40" height="40" alt="My Ecommerce">
             </a>
         </div>
         <!-- /Logo -->

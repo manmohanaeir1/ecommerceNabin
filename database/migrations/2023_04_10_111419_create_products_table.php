@@ -16,6 +16,7 @@ class CreateProductsTable extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->string('title');
+            $table->string("brand")->nullable();
             $table->string('slug');
             $table->string('thumbnail');
             $table->unsignedBigInteger('category_id');
@@ -23,7 +24,7 @@ class CreateProductsTable extends Migration
             $table->string('new_price');
             $table->string('short_description');
             $table->longText('description');
-            $table->string('features');
+            $table->string('features')->nullable();
             $table->boolean('availability')->default(1);
             $table->enum('status', ["Draft", "Published"]);
             //making `category_id` as foreign key

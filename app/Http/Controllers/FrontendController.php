@@ -28,8 +28,13 @@ class FrontendController extends Controller
 
         $products = Product::all();
 
+        // get all product category 
+        $categories = ProductCategory::all();
 
-        return view('frontend.home' , compact('photos' , 'photo_lists','products'));
+        
+
+
+        return view('frontend.home' , compact('photos' , 'photo_lists','products', 'categories'));
     }
 
     public function about(){
@@ -54,10 +59,14 @@ class FrontendController extends Controller
         // get all products rendom 4
         $randomproducts = Product::inRandomOrder()->limit(4)->get();
 
+      // get brand from product table
+        $brands = Product::select('brand')->distinct()->limit(4)->get();
+
+
 
         
 
-    return  view('frontend.pages.shop' , compact('categories'   , 'subcategories' , 'products' , 'randomproducts'));
+    return  view('frontend.pages.shop' , compact('categories'   , 'subcategories' , 'products' , 'randomproducts' , 'brands'));
     
     }
 

@@ -5,6 +5,7 @@
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\CourseController;
@@ -38,6 +39,9 @@ Route::group(['middleware' => 'HtmlMinifier'], function () {
     Route::get('shop', [FrontendController::class, 'shop'])->name('frontend.shop');
     Route::get('contact-us', [FrontendController::class, 'contact'])->name('frontend.contact');
     Route::get('single-product/{id}', [FrontendController::class, 'singleproduct'])->name('frontend.single-product'); 
+
+    Route::post('/contact/store', [App\Http\Controllers\ContactController::class, 'store'])->name('pages.contactstore');
+
 });
 
 
@@ -92,9 +96,10 @@ Route::resource('product', ProductController::class);
     // for career using resource
     // Route::resource('career', CareerController::class);
 
-// for contact resource
-Route::resource('contact', ContactController::class);
+  // for contact resource
 
+  Route::get('contact', [ContactController::class, 'index'])->name('contact.index');
+  Route::get('contact/destroy', [ContactController::class, 'destroy'])->name('contact.destroy');
      
     
     

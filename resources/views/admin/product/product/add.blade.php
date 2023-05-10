@@ -29,11 +29,19 @@
                     <div class="card-body">
 
                             <div class="row">
-                                <div class="col-md-12">
+                                <div class="col-md-8">
                                     <div class="form-group">
                                         <label for="title">Product Name <span class="text-danger">*</span></label>
                                         <input type="text" class="form-control" id="title" name="title" value="{{ old('title') }} " reruired>
                                     </div>
+                                    
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="title">Brand <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" id="brand" name="brand" value="{{ old('brand') }} " reruired>
+                                    </div>
+                                    
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
@@ -114,22 +122,21 @@
             <div class="col-md-4">
                 <div class="card">
                     <div class="card-body">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <img src="https://via.placeholder.com/300x200?text=Thumbnail+Image" alt="" id="one">
-                                    <div class="form-group" style="margin-top: 10px">
-                                        <label for="image">Thumbnail <span class="text-danger">*</span> </label>
-                                        <input type="file" class="form-control" id="thumbnail" name="thumbnail">
-                                    </div>
-                                </div>
-                            </div>
+
+                        <label class="form-label" for="image"> Thumbnail <span class="text-danger">*</span></label> <br>
+                        <img src="https://via.placeholder.com/300x200?text=Thumbnail+Image" alt="" height="300" width="200" class="img img-responsive img-thumbnail" id="createImage">
+                        <input type="file" class="form-control" name="thumbnail" id="thumbnail" accept="image/*" onchange="document.getElementById('createImage').src = window.URL.createObjectURL(this.files[0])">
+
                             <div class="row">
                                 <div class="col-md-12">                             
                                     <div class="form-group" style="margin-top: 10px">
                                         <label for="photo_image">Photo Image  <span class="text-danger">Multiple related photo can upload </span> </label>
-                                        <input type="file" class="form-control" id="photo_image" name="image[]" multiple= "multiple">
+                                        <input type="file" class="form-control" id="photo_image" name="image[]"  multiple= "multiple">
                                         
                                     </div>
+ 
+
+
                                 </div>
                             </div>
 
@@ -154,18 +161,15 @@
         });
     </script>
     <script>
-        $(document).ready(function () {
-            $('#image').change(function (e) {
+        function readURL(input){
+            if(input.files && input.files[0]){
                 var reader = new FileReader();
-                reader.onload = function (e) {
-                    $('#one')
-                        .attr('src', e.target.result)
-                        .width(300)
-                        .height(200);
-                };
-                reader.readAsDataURL(e.target.files[0]);
-            });
-        });
+                reader.onload = function (e){
+                    $("#one").attr('src', e.target.result).width(300);
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }           
     </script>
 
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js%22%3E "> </script>

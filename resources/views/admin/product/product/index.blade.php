@@ -74,8 +74,22 @@
                                         <td>{{ $product->status }}</td>
                                         <td>
                                             <a href="{{ route('product.edit', $product->id) }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></a>
-                                            <a href="{{ route('product.destroy', $product->id) }}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
+
+                                            <form id="delete-form-{{ $product->id }}" action="{{ route('product.destroy', $product->id) }}" method="POST" style="display: none;">
+                                                @csrf
+                                                @method('DELETE')
+                                            </form>
+                                            <button class="btn btn-danger btn-sm" type="button" onclick="if(confirm('Are you sure? You want to delete this?')){
+                                                event.preventDefault();
+                                                document.getElementById('delete-form-{{ $product->id }}').submit();
+                                            }else {
+                                                event.preventDefault();
+                                                    }"><i class="fa fa-trash"></i></button>
+
+
+
                                         </td>
+
                                     </tr>
 
                                     @endforeach

@@ -29,7 +29,6 @@ class StoreContactRequest extends FormRequest
             'name'   => 'required',
             'email'  => 'required | email ',
             'phone'  => 'required   | regex:/^([0-9\s\-\+\(\)]*)$/ | min:9 | max:10',
-            'subject'  => 'required ',
             'message'  => 'required',
 
         ];
@@ -45,7 +44,6 @@ class StoreContactRequest extends FormRequest
             'phone.required' => 'Phone is required',
             'phone.numeric' => 'Phone is invalid , insert only digits',
             
-            'subject.required' => 'Subject is required',
             'message.required' => 'Message is required',
 
         ];

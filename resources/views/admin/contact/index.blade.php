@@ -38,7 +38,6 @@
                                     <th>Name</th>
                                     <th>Email</th>
                                     <th>Phone</th>
-                                    <th>Subject</th>
                                     <th>Message</th>
                                     <th>Action</th>
                                    
@@ -52,13 +51,12 @@
                                         <td>{{ $contact->name }}</td>
                                         <td>{{ $contact->email }}</td>
                                         <td>{{ $contact->phone }}</td>
-                                        <td>{{ $contact->subject }}</td>
                                         <td>                                           
                                              <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal{{$contact->id}}">Message</button>
                                         </td>
                                         <td>
                                              
-                                            <form action="{{ route('contact.destroy', $contact->id) }}" method="POST" style="display: inline-block;">
+                                            <form action="{{ route('contact.destroy', $contact->id) }}" method="DELETE" style="display: inline-block;">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')"><i class="fa fa-trash"></i></button>

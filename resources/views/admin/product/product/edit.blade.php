@@ -20,16 +20,32 @@
         <!-- /Page Header -->
 
         @include('admin.layouts.includes._message')
-        <form action="{{ route('post.update', $post->id) }}" method="POST" enctype="multipart/form-data">
+      
 
+        <form action="{{ route('product.update', $product->id) }}" method="POST" enctype="multipart/form-data">
             @csrf
+            @method('PUT')
         <div class="row">
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-body">
 
                             <div class="row">
+                                <div class="col-md-8">
+                                    <div class="form-group">
+                                        <label for="title">Product Name <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" id="title" name="title" value="{{ $product->title}} " reruired>
+                                    </div>
+                                    
+                                </div>
                                 <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="title">Brand <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" id="brand" name="brand" value="{{ $product->brand }} " reruired>
+                                    </div>
+                                    
+                                </div>
+                                <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="category_id">Under Category <span class="text-danger">*</span></label>
                                         <select name="category_id" id="category_id" class="form-control">
@@ -37,42 +53,54 @@
                                         </select>
                                     </div>
                                 </div>
-
-
-                                <div class="col-md-8">
+                                <div class="col-md-3">
                                     <div class="form-group">
-                                        <label for="post_title">Post Title <span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control" id="post_title" name="post_title" value="{{ $post->post_title }}">
+                                        <label for="price">Price </label>
+                                        <input type="text" class="form-control" id="price" name="price" value="{{ $product->price }}">
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="new_price">New Price </label>
+                                        <input type="text" class="form-control" id="new_price" name="new_price" value="{{ $product->new_price }}">
                                     </div>
                                 </div>
 
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label for="post_content">Content <span class="text-danger">*</span></label>
-                                        <textarea name="post_content" id="post_content" cols="30" rows="10" class="form-control" required>
-                                            {{ $post->post_content }}
+                                        <label for="short_description">Features <span class="text-danger">*</span></label>
+                                        <textarea name="short_description" id="short_description" cols="5" rows="5" class="form-control"required >
+                                            {{ $product->short_description }}
+                                        </textarea>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="description"> Description <span class="text-danger">*</span></label>
+                                        <textarea name="description" id="description" cols="30" rows="10" class="form-control"required >
+                                            {{ $product->description }}
                                         </textarea>
                                     </div>
                                 </div>
 
 
-                                <div class="col-md-12">
+                                {{-- <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="tag_id">Select Tags <span class="text-danger">*</span></label>
                                         <select name="tag_id[]" id="tag_id" class="form-control tags" multiple required>
                                             @foreach($tags as $tag)
-                                                <option value="{{ $tag->id }}" {{ in_array($tag->id, $post_tag) ? 'selected' : '' }}>{{ $tag->name }}</option>
+                                                <option value="{{ $tag->id }}">{{ $tag->name }}</option>
                                             @endforeach
                                         </select>
                                     </div>
-                                </div>
+                                </div> --}}
                             </div>
 
 
 
                             <div class="form-group">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="1" @if($post->status == "Published") checked @endif name="status" >
+                                    <input class="form-check-input" type="checkbox" value="1" checked name="status">
                                     <label class="form-check-label" for="invalidCheck2">
                                        Published Post
                                     </label>
@@ -96,55 +124,26 @@
             <div class="col-md-4">
                 <div class="card">
                     <div class="card-body">
+
+                        <label class="form-label" for="image"> Thumbnail <span class="text-danger">*</span></label> <br>
+                        <img src="https://via.placeholder.com/300x200?text=Thumbnail+Image" alt="" height="300" width="200" class="img img-responsive img-thumbnail" id="createImage">
+                        <input type="file" class="form-control" name="thumbnail" id="thumbnail" accept="image/*" onchange="document.getElementById('createImage').src = window.URL.createObjectURL(this.files[0])">
+
                             <div class="row">
-                                <div class="col-md-12">
-                                    @if(!empty($post->image))
-                                    <img src="{{ asset('uploads/posts/'.$post->image) }}" alt="" id="one" width="300" height="200">
-                                    @else
-                                        <img src="https://via.placeholder.com/300x200?text=Thumbnail+Image" alt="" id="one">
-                                    @endif
+                                <div class="col-md-12">                             
                                     <div class="form-group" style="margin-top: 10px">
-                                        <label for="image">Post Image <span class="text-danger">*</span> </label>
-                                        <input type="file" class="form-control" id="image" name="image" accept="image/*" onchange="readURL(this);">
+                                        <label for="photo_image">Photo Image  <span class="text-danger">Multiple related photo can upload </span> </label>
+                                        <input type="file" class="form-control" id="photo_image" name="image[]"  multiple= "multiple">
+                                        
                                     </div>
-                                </div>
-                            </div>
+ 
 
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label for="seo_title">SEO Title </label>
-                                    <input type="text" class="form-control" id="seo_title" name="seo_title" value="{{ $post->seo_title }}">
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label for="seo_subtitle">SEO Sub Title </label>
-                                    <input type="text" class="form-control" id="seo_subtitle" name="seo_subtitle" value="{{ $post->seo_subtitle }}">
+
                                 </div>
                             </div>
 
 
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label for="seo_keywords">SEO Keywords </label>
-                                    <input type="text" class="form-control" id="seo_keywords" name="seo_keywords" value="{{ $post->seo_keywords }}">
-                                </div>
-                            </div>
-
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label for="seo_description">SEO Description </label>
-                                    <input type="text" class="form-control" id="seo_description" name="seo_description" value="{{ $post->seo_description }}">
-                                </div>
-                            </div>
-
-                        </div>
-
-
-
-
-
+                       
                 </div>
             </div>
         </div>
