@@ -231,64 +231,45 @@ Home
 						</div>
 					</div>
 				</div>
-				<div class="wrap-top-banner">
-					<a href="#" class="link-banner banner-effect-2">
-						<figure><img src="assets/images/digital-electronic-banner.jpg" width="1170" height="240" alt=""></figure>
-					</a>
-				</div>
+				
 			</div>
 
 			
+			<!-- all -->
 			<div class="wrap-show-advance-info-box style-1">
-				<!--Product Categories-->
-				<h3 class="title-box">Product Categories</h3>
-				<div class="wrap-top-banner">
-					<a href="#" class="link-banner banner-effect-2">
-						<figure><img src="assets/images/fashion-accesories-banner.jpg"  alt=""></figure>
-					</a>
-				</div>
+				<h3 class="title-box">Popular Products</h3>
+				
 				<div class="wrap-products">
-					<div class="wrap-product-tab tab-style-1">
-						<div class="tab-control">
-							@foreach ($categories as $item)
-							<a href="#fashion_1a" class="tab-control-item active">{{$item->name}}</a>
-							@endforeach
-						</div>
-						<div class="tab-contents">
-							<div class="row">
-						<div class="col-md-12">
-							<div class="tab-content-item active" id="fashion_1a">
-								<div class="wrap-products slide-carousel owl-carousel style-nav-1 equal-container" data-items="5" data-loop="false" data-nav="true" data-dots="false" data-responsive='{"0":{"items":"1"},"480":{"items":"2"},"768":{"items":"3"},"992":{"items":"4"},"1200":{"items":"5"}}' >
-									@foreach ($categories as $item)		
-									<div class="product product-style-2 equal-elem ">
+					<div class="wrap-product-tab tab-style-1">	
+			<div class="row">
+
+						<ul class="product-list grid-products equal-container">
+							@foreach ($Allproducts as $item)
+								<li class="col-lg-3 col-md-6 col-sm-6 col-xs-6 ">
+									<div class="product product-style-3 equal-elem ">
 										<div class="product-thumnail">
-											<a href="{{route('frontend.single-product', $item->id)}}" title="{{$item->title}}">
-												<figure><img src="{{asset('uploads/products/thumbnail/'. $item->thumbnail)}}" width="800" height="800" alt="{{$item->title}}"></figure>
+											<a href="{{route('frontend.single-product', $item->id) }}" title="">
+												<figure><img src="{{asset('uploads/products/thumbnail/'. $item->thumbnail)}}" alt="{!!Str::limit($item->title, 50) !!}"></figure>
 											</a>
-											<div class="group-flash">
-												<span class="flash-item new-label">new</span>
-											</div>
-											<div class="wrap-btn">
-												<a href="{{route('frontend.single-product', $item->id) }}" class="function-link">quick view</a>
-											</div>
 										</div>
 										<div class="product-info">
-											<a href="{{route('frontend.single-product', $item->id) }}" class="product-name"><span>{!!Str::limit($item->title, 30) !!}</span></a>
-											<div class="wrap-price"><span class="product-price">Rs.{{$item->price}}</span></div>
+											<a href="{{route('frontend.single-product', $item->id) }}" class="product-name"><span>{!!Str::limit($item->title, 50) !!}</span></a>
+											<div class="wrap-price"><span class="product-price">{{$item->price}}</span></div>
+											<a href="#" class="btn add-to-cart">Add To Cart</a>
 										</div>
 									</div>
-									@endforeach
-								</div>
-							</div>
-						</div>
+								</li>
+							@endforeach
+							
+							
 
-						
+						</ul>
+
 					</div>
-				</div>
-
-			</div>			
-
 		</div>
+	</div>
+	</div>
+</div>
 
 	</main>
 

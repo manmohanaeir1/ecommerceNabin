@@ -24,17 +24,21 @@ class FrontendController extends Controller
         // photo list
         $photo_lists = Photo_list::inRandomOrder()->limit(2)->get();
 
-        // get all products
-
-        $products = Product::all();
+        // get all latest products
+            
+        $products = Product::latest()->get();
 
         // get all product category 
         $categories = ProductCategory::all();
 
+        // get all product random
+        $Allproducts = Product::inRandomOrder()->limit(9)->get(); 
+
+
         
 
 
-        return view('frontend.home' , compact('photos' , 'photo_lists','products', 'categories'));
+        return view('frontend.home' , compact('photos' , 'photo_lists','products', 'categories' , 'Allproducts'));
     }
 
     public function about(){
@@ -53,8 +57,8 @@ class FrontendController extends Controller
         $subcategories = ProductCategory::where('parent_id' , '!=' , 0)->get();
 
     
-        // get all products
-        $products = Product::paginate(6);
+        // get all products paginate 
+        $products = Product::paginate(9);
 
         // get all products rendom 4
         $randomproducts = Product::inRandomOrder()->limit(4)->get();
